@@ -50,7 +50,7 @@ function logout() {
 
 function logInvalidLogin(username) {
     const timestamp = new Date().toLocaleString();
-    const logEntry = `[\${timestamp}] Invalid login attempt for user: \${username}`;
+    const logEntry = \`[\${timestamp}] Invalid login attempt for user: \${username}\`;
     logs.push(logEntry);
     displayLogs();
 }
@@ -77,7 +77,7 @@ function createTicket() {
         };
         tickets.push(newTicket);
         displayTickets();
-        logEvent(`Ticket ${newTicket.id} created by ${loggedInUser}`);
+        logEvent(\`Ticket \${newTicket.id} created by \${loggedInUser}\`);
         document.getElementById('ticket-title').value = '';
         document.getElementById('ticket-description').value = '';
         document.getElementById('ticket-priority').value = 'medium';
@@ -91,18 +91,18 @@ function displayTickets() {
     ticketList.innerHTML = '';
     tickets.forEach(ticket => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `
+        listItem.innerHTML = \`
 <div class="ticket-item">
-  <p><strong>ID:</strong> ${ticket.id}</p>
-  <p><strong>Title:</strong> ${ticket.title}</p>
-  <p><strong>Description:</strong> ${ticket.description}</p>
-  <p><strong>Priority:</strong> ${ticket.priority}</p>
-  <p><strong>Status:</strong> ${ticket.status}</p>
-  <p><strong>Created At:</strong> ${ticket.createdAt}</p>
-  <p><strong>Assigned To:</strong> ${ticket.assignedTo}</p>
-  <button onclick="resolveTicket(${ticket.id})">Resolve</button>
+  <p><strong>ID:</strong> \${ticket.id}</p>
+  <p><strong>Title:</strong> \${ticket.title}</p>
+  <p><strong>Description:</strong> \${ticket.description}</p>
+  <p><strong>Priority:</strong> \${ticket.priority}</p>
+  <p><strong>Status:</strong> \${ticket.status}</p>
+  <p><strong>Created At:</strong> \${ticket.createdAt}</p>
+  <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
+  <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
 </div>
-`;
+\`;
         ticketList.appendChild(listItem);
     });
 }
@@ -112,18 +112,18 @@ function displayExistingTickets() {
 
     tickets.forEach((ticket) => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `
+        listItem.innerHTML = \`
     <div class="ticket-item">
-        <p><strong>ID:</strong> ${ticket.id}</p>
-        <p><strong>Title:</strong> ${ticket.title}</p>
-        <p><strong>Description:</strong> ${ticket.description}</p>
-        <p><strong>Priority:</strong> ${ticket.priority}</p>
-        <p><strong>Status:</strong> ${ticket.status}</p>
-         <p><strong>Created At:</strong> ${ticket.createdAt}</p>
-        <p><strong>Assigned To:</strong> ${ticket.assignedTo}</p>
-        <button onclick="resolveTicket(${ticket.id})">Resolve</button>
+        <p><strong>ID:</strong> \${ticket.id}</p>
+        <p><strong>Title:</strong> \${ticket.title}</p>
+        <p><strong>Description:</strong> \${ticket.description}</p>
+        <p><strong>Priority:</strong> \${ticket.priority}</p>
+        <p><strong>Status:</strong> \${ticket.status}</p>
+         <p><strong>Created At:</strong> \${ticket.createdAt}</p>
+        <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
+        <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
     </div>
-`;
+\`;
         ticketList.appendChild(listItem);
     });
 }
