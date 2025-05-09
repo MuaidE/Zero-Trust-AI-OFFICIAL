@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Ticket Center</h1>
+    <div id="new-ticket-form">
+        <h2>Create New Ticket</h2>
+        <label for="ticket-title">Title:</label>
+        <input type="text" id="ticket-title" required>
+        <label for="ticket-description">Description:</label>
+        <textarea id="ticket-description" required></textarea>
+        <label for="ticket-priority">Priority:</label>
+        <select id="ticket-priority">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <button onclick="createTicket()">Create Ticket</button>
+    </div>
+    <div id="existing-tickets">
+        <h2>Existing Tickets</h2>
+        <ul id="existing-ticket-list">
+        </ul>
+    </div>
+    <div class="page-navigation">
+        <button onclick="showPage('soc-page')">SOC Page</button>
+        <button onclick="showPage('audit-page')">Audit Logs</button>
+         <button onclick="logout()">Logout</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
