@@ -30,7 +30,7 @@ function login() {
     if (users[username] === password) {
         loggedInUser = username;
         showPage('soc-page');
-        loadInitialData(); // Load data after successful login
+        loadInitialData(); // Load data after successful login.  Make sure this function is called.
         loginError.style.display = 'none';
     } else {
         loginError.textContent = 'Invalid username or password.';
@@ -50,7 +50,7 @@ function logout() {
 
 function logInvalidLogin(username) {
     const timestamp = new Date().toLocaleString();
-    const logEntry = `[${timestamp}] Invalid login attempt for user: ${username}`;
+    const logEntry = \`[\${timestamp}] Invalid login attempt for user: \${username}\`;
     logs.push(logEntry);
     displayLogs();
 }
@@ -92,17 +92,17 @@ function displayTickets() {
     tickets.forEach(ticket => {
         const listItem = document.createElement('li');
         listItem.innerHTML = \`
-    <div class="ticket-item">
-      <p><strong>ID:</strong> \${ticket.id}</p>
-      <p><strong>Title:</strong> \${ticket.title}</p>
-      <p><strong>Description:</strong> \${ticket.description}</p>
-      <p><strong>Priority:</strong> \${ticket.priority}</p>
-      <p><strong>Status:</strong> \${ticket.status}</p>
-      <p><strong>Created At:</strong> \${ticket.createdAt}</p>
-      <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
-      <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
-    </div>
-  \`;
+<div class="ticket-item">
+  <p><strong>ID:</strong> \${ticket.id}</p>
+  <p><strong>Title:</strong> \${ticket.title}</p>
+  <p><strong>Description:</strong> \${ticket.description}</p>
+  <p><strong>Priority:</strong> \${ticket.priority}</p>
+  <p><strong>Status:</strong> \${ticket.status}</p>
+  <p><strong>Created At:</strong> \${ticket.createdAt}</p>
+  <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
+  <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
+</div>
+\`;
         ticketList.appendChild(listItem);
     });
 }
@@ -113,17 +113,17 @@ function displayExistingTickets() {
     tickets.forEach((ticket) => {
         const listItem = document.createElement('li');
         listItem.innerHTML = \`
-          <div class="ticket-item">
-              <p><strong>ID:</strong> \${ticket.id}</p>
-              <p><strong>Title:</strong> \${ticket.title}</p>
-              <p><strong>Description:</strong> \${ticket.description}</p>
-              <p><strong>Priority:</strong> \${ticket.priority}</p>
-              <p><strong>Status:</strong> \${ticket.status}</p>
-               <p><strong>Created At:</strong> \${ticket.createdAt}</p>
-              <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
-              <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
-          </div>
-      \`;
+      <div class="ticket-item">
+          <p><strong>ID:</strong> \${ticket.id}</p>
+          <p><strong>Title:</strong> \${ticket.title}</p>
+          <p><strong>Description:</strong> \${ticket.description}</p>
+          <p><strong>Priority:</strong> \${ticket.priority}</p>
+          <p><strong>Status:</strong> \${ticket.status}</p>
+           <p><strong>Created At:</strong> \${ticket.createdAt}</p>
+          <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
+          <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
+      </div>
+  \`;
         ticketList.appendChild(listItem);
     });
 }
@@ -159,7 +159,7 @@ function logEvent(event) {
 
 function handleAutomatedTicketActions(ticketId) {
     const ticket = tickets.find(t => t.id === ticketId);
-      setTimeout(() => {
+    setTimeout(() => {
         const mitigationPlan = getMitigationPlan(ticketId);
         logEvent(\`AI suggested mitigation plan for Ticket \${ticket.id}: \${mitigationPlan.plan}\`);
     }, 1000);
