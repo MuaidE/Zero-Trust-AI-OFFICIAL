@@ -77,7 +77,7 @@ function createTicket() {
         };
         tickets.push(newTicket);
         displayTickets();
-        logEvent(`Ticket ${newTicket.id} created by ${loggedInUser}`);
+        logEvent(\`Ticket \${newTicket.id} created by \${loggedInUser}\`);
         document.getElementById('ticket-title').value = '';
         document.getElementById('ticket-description').value = '';
         document.getElementById('ticket-priority').value = 'medium';
@@ -91,18 +91,18 @@ function displayTickets() {
     ticketList.innerHTML = '';
     tickets.forEach(ticket => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `
-      <div class="ticket-item">
-        <p><strong>ID:</strong> ${ticket.id}</p>
-        <p><strong>Title:</strong> ${ticket.title}</p>
-        <p><strong>Description:</strong> ${ticket.description}</p>
-        <p><strong>Priority:</strong> ${ticket.priority}</p>
-        <p><strong>Status:</strong> ${ticket.status}</p>
-        <p><strong>Created At:</strong> ${ticket.createdAt}</p>
-        <p><strong>Assigned To:</strong> ${ticket.assignedTo}</p>
-        <button onclick="resolveTicket(${ticket.id})">Resolve</button>
-      </div>
-    `;
+        listItem.innerHTML = \`
+    <div class="ticket-item">
+      <p><strong>ID:</strong> \${ticket.id}</p>
+      <p><strong>Title:</strong> \${ticket.title}</p>
+      <p><strong>Description:</strong> \${ticket.description}</p>
+      <p><strong>Priority:</strong> \${ticket.priority}</p>
+      <p><strong>Status:</strong> \${ticket.status}</p>
+      <p><strong>Created At:</strong> \${ticket.createdAt}</p>
+      <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
+      <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
+    </div>
+  \`;
         ticketList.appendChild(listItem);
     });
 }
@@ -112,18 +112,18 @@ function displayExistingTickets() {
 
     tickets.forEach((ticket) => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `
-            <div class="ticket-item">
-                <p><strong>ID:</strong> ${ticket.id}</p>
-                <p><strong>Title:</strong> ${ticket.title}</p>
-                <p><strong>Description:</strong> ${ticket.description}</p>
-                <p><strong>Priority:</strong> ${ticket.priority}</p>
-                <p><strong>Status:</strong> ${ticket.status}</p>
-                 <p><strong>Created At:</strong> ${ticket.createdAt}</p>
-                <p><strong>Assigned To:</strong> ${ticket.assignedTo}</p>
-                <button onclick="resolveTicket(${ticket.id})">Resolve</button>
-            </div>
-        `;
+        listItem.innerHTML = \`
+          <div class="ticket-item">
+              <p><strong>ID:</strong> \${ticket.id}</p>
+              <p><strong>Title:</strong> \${ticket.title}</p>
+              <p><strong>Description:</strong> \${ticket.description}</p>
+              <p><strong>Priority:</strong> \${ticket.priority}</p>
+              <p><strong>Status:</strong> \${ticket.status}</p>
+               <p><strong>Created At:</strong> \${ticket.createdAt}</p>
+              <p><strong>Assigned To:</strong> \${ticket.assignedTo}</p>
+              <button onclick="resolveTicket(\${ticket.id})">Resolve</button>
+          </div>
+      \`;
         ticketList.appendChild(listItem);
     });
 }
@@ -133,7 +133,7 @@ function resolveTicket(ticketId) {
     if (ticket) {
         ticket.status = 'Resolved';
         displayTickets();
-        logEvent(`Ticket ${ticket.id} resolved by ${loggedInUser}`);
+        logEvent(\`Ticket \${ticket.id} resolved by \${loggedInUser}\`);
         handleAutomatedTicketActions(ticketId);
     }
 }
@@ -150,7 +150,7 @@ function displayLogs() {
 
 function logEvent(event) {
     const timestamp = new Date().toLocaleString();
-    const logEntry = `[${timestamp}] ${event}`;
+    const logEntry = \`[\${timestamp}] \${event}\`;
     logs.push(logEntry);
     displayLogs();
 }
@@ -161,7 +161,7 @@ function handleAutomatedTicketActions(ticketId) {
     const ticket = tickets.find(t => t.id === ticketId);
       setTimeout(() => {
         const mitigationPlan = getMitigationPlan(ticketId);
-        logEvent(`AI suggested mitigation plan for Ticket ${ticket.id}: ${mitigationPlan.plan}`);
+        logEvent(\`AI suggested mitigation plan for Ticket \${ticket.id}: \${mitigationPlan.plan}\`);
     }, 1000);
 }
 
@@ -186,8 +186,8 @@ function loadInitialData() {
             { id: 3, title: 'Phishing Email Received', description: 'User reported a suspicious email', priority: 'Low', status: 'Open', createdAt: new Date().toLocaleString(), assignedTo: 'Rashid' },
         ];
         logs = [
-            `[${new Date().toLocaleString()}] System started`,
-            `[${new Date().toLocaleString()}] User ${loggedInUser} logged in`,
+            \`[\${new Date().toLocaleString()}] System started\`,
+            \`[\${new Date().toLocaleString()}] User \${loggedInUser} logged in\`,
         ];
         displayTickets();
         displayLogs();
