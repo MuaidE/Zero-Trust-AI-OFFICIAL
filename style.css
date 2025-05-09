@@ -1,0 +1,12 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+.page {
+    display: none;
+    margin-top: 20px;
+}
+#login-page {
+    display: block;
+}
+/* Add more CSS styles here */
